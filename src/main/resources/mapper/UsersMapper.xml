@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace 就是Mapper接口的地址 -->
+<mapper namespace="com.ys.mvc.mapper.UsersMapper">
+
+    <!--<resultMap id="userResult" type="com.ys.mvc.pojo.Users">-->
+    <!--<id column="id" property="id" jdbcType="INTEGER"/>-->
+    <!--<result column="username" property="username" jdbcType="VARCHAR"/>-->
+    <!--<result column="userpasswd" property="userpasswd" jdbcType="VARCHAR"/>-->
+    <!--</resultMap>-->
+
+    <!--<sql id="columns">-->
+    <!--id,username,userpasswd-->
+    <!--</sql>-->
+
+    <!--id 称为statement的id，将sql语句封装成mappedStatement中  paramerType 参数类型  resultType 返回的结果集-->
+    <!--<select id="get" resultType="userResult">-->
+    <!--SELECT-->
+    <!--<include refid="columns"/>-->
+    <!--FROM users-->
+    <!--</select>-->
+
+
+    <select id="findUserById" parameterType="int" resultType="users">
+        SELECT  * from users WHERE id=#{id}
+    </select>
+
+    <select id="findUserByName" parameterType="String" resultType="users">
+        SELECT  * from users WHERE username LIKE %${VALUE}%
+    </select>
+
+
+    <insert id="insertUser" parameterType="users">
+
+        <!--  得到插入这一条记录的id 返回主键的id-->
+        <selectKey keyProperty="id" order="AFTER" resultType="Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO users(id,username,userpasswd) VALUE (#{id},#{username},#{userpasswd})
+    </insert>
+
+    <delete id="deleteUser" parameterType="Integer">
+        DELETE FROM users WHERE id=#{id}
+    </delete>
+
+    <update id="upDateUser" parameterType="users">
+        UPDATE users SET username = #{},userpasswd=#{} WHERE id = #{id}
+    </update>
+
+
+</mapper>
