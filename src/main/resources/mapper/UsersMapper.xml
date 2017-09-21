@@ -3,30 +3,42 @@
 <!-- namespace 就是Mapper接口的地址 -->
 <mapper namespace="com.ys.mvc.mapper.UsersMapper">
 
-    <!--<resultMap id="userResult" type="com.ys.mvc.pojo.Users">-->
-    <!--<id column="id" property="id" jdbcType="INTEGER"/>-->
-    <!--<result column="username" property="username" jdbcType="VARCHAR"/>-->
-    <!--<result column="userpasswd" property="userpasswd" jdbcType="VARCHAR"/>-->
-    <!--</resultMap>-->
+    <resultMap id="userResult" type="com.ys.mvc.pojo.Users">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username_" property="username" jdbcType="VARCHAR"/>
+        <result column="userpasswd_" property="userpasswd" jdbcType="VARCHAR"/>
+    </resultMap>
 
-    <!--<sql id="columns">-->
-    <!--id,username,userpasswd-->
-    <!--</sql>-->
+    <sql id="columns">
+    id id_,username username_,userpasswd userpasswd_
+    </sql>
 
-    <!--id 称为statement的id，将sql语句封装成mappedStatement中  paramerType 参数类型  resultType 返回的结果集-->
-    <!--<select id="get" resultType="userResult">-->
-    <!--SELECT-->
-    <!--<include refid="columns"/>-->
-    <!--FROM users-->
-    <!--</select>-->
+    <!--id 称为statement的id，将sql语句封装成mappedStatement中 paramerType 参数类型 resultType 返回的结果集-->
+    <select id="get" resultType="userResult">
+        SELECT
+        <include refid="columns"/>
+        FROM users
+    </select>
 
 
     <select id="findUserById" parameterType="int" resultType="users">
-        SELECT  * from users WHERE id=#{id}
+        SELECT * from users WHERE id=#{id}
+
+        <if test="id!=null">
+            id = #{id}
+        </if>
     </select>
 
-    <select id="findUserByName" parameterType="String" resultType="users">
-        SELECT  * from users WHERE username LIKE %${VALUE}%
+    <select id="findUserByName" parameterType="users" resultType="users">
+        SELECT * from users
+        <where>
+            <if test="id!=null">
+                and id = #{id}
+                <if test="username!=null">
+                    username like %#{username}%
+                </if>
+            </if>
+        </where>
     </select>
 
 

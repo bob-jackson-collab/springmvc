@@ -10,7 +10,6 @@ import java.util.List;
  * Created by yunshan on 17/9/15.
  */
 
-@Component
 public interface UsersMapper {
 
     List<Users> get();
