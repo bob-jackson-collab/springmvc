@@ -20,16 +20,12 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    Logger logger = Logger.getLogger(UserController.class);
-
     @Autowired
     UserService userService;
-
 
     @RequestMapping("/users")
     @ResponseBody
     public List<Users> getUsers() {
-
         return userService.getUsers();
     }
 }

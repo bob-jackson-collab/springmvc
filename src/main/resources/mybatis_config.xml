@@ -21,11 +21,8 @@
         <package name="com.ys.mvc.pojo"/>
     </typeAliases>
 
-    <typeHandlers>
+    <mappers>
+        <mapper resource="mapper/UsersMapper.xml" />
 
-    </typeHandlers>
-
-    <!--<mappers>-->
-        <!--<package name="classpath:mapper/*.xml"/>-->
-    <!--</mappers>-->
+    </mappers>
 </configuration>
