@@ -1,12 +1,10 @@
 package com.ys.mvc.pojo;
 
-/**
- * Created by yunshan on 17/9/18.
- */
 public class Users {
-
     private Integer id;
+
     private String username;
+
     private String userpasswd;
 
     public Integer getId() {
@@ -22,7 +20,7 @@ public class Users {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getUserpasswd() {
@@ -30,6 +28,6 @@ public class Users {
     }
 
     public void setUserpasswd(String userpasswd) {
-        this.userpasswd = userpasswd;
+        this.userpasswd = userpasswd == null ? null : userpasswd.trim();
     }
 }

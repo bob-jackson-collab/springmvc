@@ -1,16 +1,17 @@
 package com.ys.mvc.mapper;
 
-import com.ys.mvc.pojo.User;
 import com.ys.mvc.pojo.Users;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-
-/**
- * Created by yunshan on 17/9/15.
- */
 
 public interface UsersMapper {
+    int deleteByPrimaryKey(Integer id);
 
-    List<Users> get();
+    int insert(Users record);
+
+    int insertSelective(Users record);
+
+    Users selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Users record);
+
+    int updateByPrimaryKey(Users record);
 }

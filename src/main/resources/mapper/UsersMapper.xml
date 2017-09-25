@@ -1,62 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- namespace 就是Mapper接口的地址 -->
-<mapper namespace="com.ys.mvc.mapper.UsersMapper">
-
-    <!--<resultMap id="userResult" type="com.ys.mvc.pojo.Users">-->
-        <!--<id column="id" property="id" />-->
-        <!--<result column="username_" property="username" />-->
-        <!--<result column="userpasswd_" property="userpasswd"/>-->
-    <!--</resultMap>-->
-
-    <sql id="columns">
-    id,username,userpasswd
-    </sql>
-
-    <!--id 称为statement的id，将sql语句封装成mappedStatement中 paramerType 参数类型 resultType 返回的结果集-->
-    <select id="get" resultType="users">
-        SELECT
-        <include refid="columns"/>
-        FROM users
-    </select>
-
-
-    <!--<select id="findUserById" parameterType="int" resultType="users">-->
-        <!--SELECT * from users WHERE id=#{id}-->
-        <!--<if test="id!=null">-->
-            <!--id = #{id}-->
-        <!--</if>-->
-    <!--</select>-->
-
-    <!--<select id="findUserByName" parameterType="users" resultType="users">-->
-        <!--SELECT * from users-->
-        <!--<where>-->
-            <!--<if test="id!=null">-->
-                <!--and id = #{id}-->
-                <!--<if test="username!=null">-->
-                    <!--username like %#{username}%-->
-                <!--</if>-->
-            <!--</if>-->
-        <!--</where>-->
-    <!--</select>-->
-
-
-    <!--<insert id="insertUser" parameterType="users">-->
-
-        <!--&lt;!&ndash;  得到插入这一条记录的id 返回主键的id&ndash;&gt;-->
-        <!--<selectKey keyProperty="id" order="AFTER" resultType="Integer">-->
-            <!--SELECT LAST_INSERT_ID()-->
-        <!--</selectKey>-->
-        <!--INSERT INTO users(id,username,userpasswd) VALUE (#{id},#{username},#{userpasswd})-->
-    <!--</insert>-->
-
-    <!--<delete id="deleteUser" parameterType="Integer">-->
-        <!--DELETE FROM users WHERE id=#{id}-->
-    <!--</delete>-->
-
-    <!--<update id="upDateUser" parameterType="users">-->
-        <!--UPDATE users SET username = #{},userpasswd=#{} WHERE id = #{id}-->
-    <!--</update>-->
-
-
+<mapper namespace="com.ys.mvc.mapper.UsersMapper" >
+  <resultMap id="BaseResultMap" type="com.ys.mvc.pojo.Users" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="userpasswd" property="userpasswd" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, userpasswd
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ys.mvc.pojo.Users" >
+    insert into users (id, username, userpasswd
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userpasswd,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ys.mvc.pojo.Users" >
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="userpasswd != null" >
+        userpasswd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswd != null" >
+        #{userpasswd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ys.mvc.pojo.Users" >
+    update users
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswd != null" >
+        userpasswd = #{userpasswd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ys.mvc.pojo.Users" >
+    update users
+    set username = #{username,jdbcType=VARCHAR},
+      userpasswd = #{userpasswd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

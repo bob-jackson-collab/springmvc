@@ -53,10 +53,29 @@
         <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
     </bean>
 
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.ys.mvc.serviceimpl.*.*(..))"/>
+    </aop:config>
+
     <!-- 扫描单个mapper-->
     <!--<bean id="usersMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
-        <!--<property name="mapperInterface" value="com.ys.mvc.mapper.UsersMapper"/>-->
-        <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+    <!--<property name="mapperInterface" value="com.ys.mvc.mapper.UsersMapper"/>-->
+    <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
     <!--</bean>-->
 
     <!-- 自动扫描，注入×Mapper实现类 -->

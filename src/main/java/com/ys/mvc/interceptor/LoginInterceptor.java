@@ -1,6 +1,5 @@
 package com.ys.mvc.interceptor;
 
-import com.ys.mvc.pojo.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,11 +18,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         String url = httpServletRequest.getRequestURL().toString();
 
-        User user = (User) httpServletRequest.getSession().getAttribute("user");
+//        User user = (User) httpServletRequest.getSession().getAttribute("user");
 
-        if (user != null) {
-            return true;
-        }
+//        if (user != null) {
+//            return true;
+//        }
 
         for (String allowedPas : allowedPass) {
             if (url.endsWith(allowedPas)) {
@@ -31,7 +30,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
         }
 
-        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "jsp/login.jsp");
+//        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "jsp/login.jsp");
         System.out.println("handle before");
         return true;
     }
