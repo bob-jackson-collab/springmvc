@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ys.mvc.mapper.DriverRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.ys.mvc.pojo.DriverRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="bd_id" property="bdId" jdbcType="BIGINT" />
+    <result column="driver_id_number" property="driverIdNumber" jdbcType="VARCHAR" />
+    <result column="nc_id_number" property="ncIdNumber" jdbcType="VARCHAR" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="manual" property="manual" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="city_id" property="cityId" jdbcType="BIGINT" />
+    <result column="record_type" property="recordType" jdbcType="BIT" />
+    <result column="record_reasons" property="recordReasons" jdbcType="VARCHAR" />
+    <result column="c_t" property="cT" jdbcType="INTEGER" />
+    <result column="u_t" property="uT" jdbcType="INTEGER" />
+    <result column="update_user" property="updateUser" jdbcType="BIGINT" />
+    <result column="update_user_name" property="updateUserName" jdbcType="VARCHAR" />
+    <result column="operate_status" property="operateStatus" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bd_id, driver_id_number, nc_id_number, driver_name, mobile, email, manual, status, 
+    city_id, record_type, record_reasons, c_t, u_t, update_user, update_user_name, operate_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from operation_driver_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from operation_driver_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ys.mvc.pojo.DriverRecord" >
+    insert into operation_driver_record (id, bd_id, driver_id_number, 
+      nc_id_number, driver_name, mobile, 
+      email, manual, status, city_id, 
+      record_type, record_reasons, c_t, 
+      u_t, update_user, update_user_name, 
+      operate_status)
+    values (#{id,jdbcType=BIGINT}, #{bdId,jdbcType=BIGINT}, #{driverIdNumber,jdbcType=VARCHAR}, 
+      #{ncIdNumber,jdbcType=VARCHAR}, #{driverName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{manual,jdbcType=BIT}, #{status,jdbcType=BIT}, #{cityId,jdbcType=BIGINT}, 
+      #{recordType,jdbcType=BIT}, #{recordReasons,jdbcType=VARCHAR}, #{cT,jdbcType=INTEGER}, 
+      #{uT,jdbcType=INTEGER}, #{updateUser,jdbcType=BIGINT}, #{updateUserName,jdbcType=VARCHAR}, 
+      #{operateStatus,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ys.mvc.pojo.DriverRecord" >
+    insert into operation_driver_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bdId != null" >
+        bd_id,
+      </if>
+      <if test="driverIdNumber != null" >
+        driver_id_number,
+      </if>
+      <if test="ncIdNumber != null" >
+        nc_id_number,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="manual != null" >
+        manual,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="recordType != null" >
+        record_type,
+      </if>
+      <if test="recordReasons != null" >
+        record_reasons,
+      </if>
+      <if test="cT != null" >
+        c_t,
+      </if>
+      <if test="uT != null" >
+        u_t,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateUserName != null" >
+        update_user_name,
+      </if>
+      <if test="operateStatus != null" >
+        operate_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="bdId != null" >
+        #{bdId,jdbcType=BIGINT},
+      </if>
+      <if test="driverIdNumber != null" >
+        #{driverIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ncIdNumber != null" >
+        #{ncIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="manual != null" >
+        #{manual,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="recordType != null" >
+        #{recordType,jdbcType=BIT},
+      </if>
+      <if test="recordReasons != null" >
+        #{recordReasons,jdbcType=VARCHAR},
+      </if>
+      <if test="cT != null" >
+        #{cT,jdbcType=INTEGER},
+      </if>
+      <if test="uT != null" >
+        #{uT,jdbcType=INTEGER},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateUserName != null" >
+        #{updateUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="operateStatus != null" >
+        #{operateStatus,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ys.mvc.pojo.DriverRecord" >
+    update operation_driver_record
+    <set >
+      <if test="bdId != null" >
+        bd_id = #{bdId,jdbcType=BIGINT},
+      </if>
+      <if test="driverIdNumber != null" >
+        driver_id_number = #{driverIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ncIdNumber != null" >
+        nc_id_number = #{ncIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="manual != null" >
+        manual = #{manual,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="recordType != null" >
+        record_type = #{recordType,jdbcType=BIT},
+      </if>
+      <if test="recordReasons != null" >
+        record_reasons = #{recordReasons,jdbcType=VARCHAR},
+      </if>
+      <if test="cT != null" >
+        c_t = #{cT,jdbcType=INTEGER},
+      </if>
+      <if test="uT != null" >
+        u_t = #{uT,jdbcType=INTEGER},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateUserName != null" >
+        update_user_name = #{updateUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="operateStatus != null" >
+        operate_status = #{operateStatus,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ys.mvc.pojo.DriverRecord" >
+    update operation_driver_record
+    set bd_id = #{bdId,jdbcType=BIGINT},
+      driver_id_number = #{driverIdNumber,jdbcType=VARCHAR},
+      nc_id_number = #{ncIdNumber,jdbcType=VARCHAR},
+      driver_name = #{driverName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      manual = #{manual,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      city_id = #{cityId,jdbcType=BIGINT},
+      record_type = #{recordType,jdbcType=BIT},
+      record_reasons = #{recordReasons,jdbcType=VARCHAR},
+      c_t = #{cT,jdbcType=INTEGER},
+      u_t = #{uT,jdbcType=INTEGER},
+      update_user = #{updateUser,jdbcType=BIGINT},
+      update_user_name = #{updateUserName,jdbcType=VARCHAR},
+      operate_status = #{operateStatus,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

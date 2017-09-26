@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20c3aef9-67c5-4cda-bbaf-dbf032635562" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ys/mvc/controller/StudentsController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DriverRecordMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ys/mvc/serviceimpl/StudentServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/ys/mvc/serviceimpl/StudentServiceImpl.java" />
     </list>
     <ignored path="SpringMVC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1088,7 +1087,7 @@
       <workItem from="1505700142788" duration="14296000" />
       <workItem from="1505808301098" duration="8322000" />
       <workItem from="1505907981180" duration="10486000" />
-      <workItem from="1506062686833" duration="15097000" />
+      <workItem from="1506062686833" duration="15154000" />
     </task>
     <task id="LOCAL-00001" summary="fix properties files">
       <created>1505979562184</created>
@@ -1118,11 +1117,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506339311355</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="重新配置属性文件&#10;">
+      <created>1506390192538</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1506390192539</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89579000" />
+    <option name="totallyTimeSpent" value="89636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="731" extended-state="0" />
