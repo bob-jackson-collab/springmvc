@@ -1,8 +1,10 @@
 package com.ys.mvc.controller;
 
+import com.ys.mvc.pojo.Students;
 import com.ys.mvc.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -17,7 +19,7 @@ public class StudentsController {
     StudentService studentService;
 
     @RequestMapping("/save")
-    public void saveStudents() throws Exception {
-        studentService.insert(null);
+    public void saveStudents(@RequestBody Students students) throws Exception {
+        studentService.insertStudent(students);
     }
 }

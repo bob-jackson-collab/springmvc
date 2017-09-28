@@ -1,6 +1,7 @@
 package com.ys.mvc.mapper;
 
 import com.ys.mvc.pojo.Students;
+import org.mybatis.spring.annotation.MapperScan;
 
 public interface StudentsMapper {
     int deleteByPrimaryKey(Integer id);

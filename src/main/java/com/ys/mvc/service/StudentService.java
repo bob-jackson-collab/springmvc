@@ -7,6 +7,6 @@ import com.ys.mvc.pojo.Students;
  */
 public interface StudentService {
 
-    int insert(Students record) throws Exception;
+    int insertStudent(Students record) throws Exception;
 
 }

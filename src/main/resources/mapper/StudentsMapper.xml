@@ -11,7 +11,7 @@
     id, student_name, student_passwd, user_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from students
     where id = #{id,jdbcType=INTEGER}

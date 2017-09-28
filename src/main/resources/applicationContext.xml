@@ -17,11 +17,13 @@
                            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
     <!-- 采用注释的方式配置bean -->
-    <!--<context:annotation-config/>-->
+    <context:annotation-config/>
 
-    <context:component-scan base-package="com.ys.mvc">
+    <context:component-scan base-package="com.ys.mvc.serviceimpl ,com.ys.mvc.service">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+
+    <!--<bean id="itemService" class="com.ys.mvc.serviceimpl.StudentServiceImpl" />-->
 
     <!--spring mybatis 数据库连接配置 -->
 
@@ -72,11 +74,11 @@
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.ys.mvc.serviceimpl.*.*(..))"/>
     </aop:config>
 
-    <!-- 扫描单个mapper-->
-    <!--<bean id="usersMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
-    <!--<property name="mapperInterface" value="com.ys.mvc.mapper.UsersMapper"/>-->
-    <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
-    <!--</bean>-->
+     <!--扫描单个mapper-->
+    <bean id="usersMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.ys.mvc.mapper.StudentsMapper"/>
+    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
 
     <!-- 自动扫描，注入×Mapper实现类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

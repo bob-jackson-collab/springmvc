@@ -22,6 +22,8 @@
     </typeAliases>
 
     <mappers>
-        <mapper resource="mapper/UsersMapper.xml" />
+        <mapper resource="mapper/UsersMapper.xml"/>
+        <mapper resource="mapper/StudentsMapper.xml"/>
+        <mapper resource="mapper/DriverRecordMapper.xml"/>
     </mappers>
 </configuration>
